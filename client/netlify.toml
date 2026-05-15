@@ -1,0 +1,12 @@
+[build]
+  # Lệnh dùng để build ứng dụng React (Vite)
+  command = "npm run build"
+  
+  # Thư mục chứa code sau khi build xong
+  publish = "dist"
+
+# Sửa lỗi 404 (Page Not Found) khi Refresh trang (do dùng React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JATHONG - Digital Identity & Web Design</title>
+    <meta name="description"
+        content="JATHONG chuyên xây dựng website, landing page và profile online chuyên nghiệp cho cá nhân, sinh viên, freelancer, creator và doanh nghiệp nhỏ.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="grid-overlay"></div>
+
+    <nav class="navbar reveal">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">JATHONG</a>
+
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content reveal">
+                    <div class="hero-badge">Digital Identity Startup</div>
+                    <h1 class="hero-headline">
+                        BIẾN THƯƠNG HIỆU CÁ NHÂN<br>
+                        THÀNH <span class="pill-text">PROFILE ONLINE</span>
+                    </h1>
+                    <p class="hero-description">
+                        JATHONG là startup được sáng lập bởi Jakie và Thong, chuyên xây dựng website, landing page và
+                        profile online chuyên nghiệp cho cá nhân, sinh viên, freelancer, creator và doanh nghiệp nhỏ.
+                    </p>
+
+                </div>
+                <div class="hero-visual reveal reveal-delay-1">
+                    <div class="visual-wrapper hero-neon-shadow" style="padding: 0; overflow: hidden; transition: all 0.3s ease; margin: -40px 0;">
+                        <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+                            <source src="video/0513.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Chúng tôi là</h2>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Text Content -->
+                    <div class="about-content reveal reveal-delay-1">
+                        <p class="lead-text">JATHONG là một startup về website, landing page và giải pháp xây dựng
+                            thương hiệu cá nhân thành profile online chuyên nghiệp, được sáng lập bởi Jakie và Thong.
+                        </p>
+
+                        <p>Chúng tôi ra đời với mong muốn giúp cá nhân, sinh viên, freelancer, creator và doanh nghiệp
+                            nhỏ có một không gian số chỉn chu để giới thiệu bản thân, trình bày dự án, thể hiện năng lực
+                            và tạo ấn tượng với người xem ngay từ lần đầu truy cập.</p>
+
+                        <p>Không chỉ dừng lại ở việc thiết kế một website đẹp, JATHONG còn tập trung vào cách biến câu
+                            chuyện, kỹ năng, kinh nghiệm và cá tính riêng của mỗi người thành một profile cá nhân có gu,
+                            có định hướng và có khả năng thuyết phục.</p>
+
+                        <p>Từ portfolio cá nhân, landing page giới thiệu dịch vụ, website mô phỏng dự án học tập cho đến
+                            profile online dành cho người muốn xây dựng hình ảnh chuyên nghiệp, JATHONG giúp mọi ý tưởng
+                            được trình bày rõ ràng, hiện đại và dễ ứng dụng trong thực tế.</p>
+
+                        <div class="about-quote">
+                            "Mỗi người đều có một giá trị riêng, chỉ là cần một cách thể hiện đủ tốt để người khác nhìn
+                            thấy và ghi nhớ."
+                        </div>
+                    </div>
+
+                    <!-- 3D Stacked Carousel based on image reference -->
+                    <div class="about-profiles 3d-carousel-wrapper reveal reveal-delay-2">
+
+                        
+                        <div class="carousel-3d-container">
+                            <!-- Card 1 -->
+                            <div class="carousel-3d-item active" onclick="jumpCarousel(0)">
+                                <img src="ảnh/1.png" alt="Jakie Profile 1" class="full-card-img">
+                            </div>
+                            
+                            <!-- Card 2 -->
+                            <div class="carousel-3d-item next-1" onclick="jumpCarousel(1)">
+                                <img src="ảnh/2.png" alt="Jakie Profile 2" class="full-card-img">
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="carousel-3d-item next-2" onclick="jumpCarousel(2)">
+                                <img src="ảnh/3.png" alt="Jakie Profile 3" class="full-card-img">
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="carousel-3d-item prev-1" onclick="jumpCarousel(3)">
+                                <img src="ảnh/4.png" alt="Jakie Profile 4" class="full-card-img">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Why Choose JATHONG Section -->
+        <section class="why-us section-padding bg-dark text-white">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Vì sao chọn JATHONG?</h2>
+                </div>
+                <div class="why-us-grid about-grid">
+                    <div class="features-grid" style="border-top: none; padding-top: 0; grid-template-columns: 1fr; gap: 2rem;">
+                        <div class="feature-item reveal">
+                            <div class="feature-title">
+                                <span class="feature-dot"></span>
+                                <h4>Có gu thẩm mỹ</h4>
+                            </div>
+                            <p>Thiết kế hiện đại, tối giản, rõ ràng và có khả năng tạo ấn tượng ngay từ cái nhìn đầu tiên.
+                            </p>
+                        </div>
+                        <div class="feature-item reveal reveal-delay-1">
+                            <div class="feature-title">
+                                <span class="feature-dot"></span>
+                                <h4>Hiểu thương hiệu cá nhân</h4>
+                            </div>
+                            <p>Không chỉ làm web đẹp, JATHONG giúp bạn thể hiện được mình là ai và bạn có gì nổi bật.</p>
+                        </div>
+                        <div class="feature-item reveal">
+                            <div class="feature-title">
+                                <span class="feature-dot"></span>
+                                <h4>Tư duy marketing</h4>
+                            </div>
+                            <p>Mỗi website không chỉ để nhìn, mà còn để truyền tải thông điệp và phục vụ mục tiêu rõ ràng.
+                            </p>
+                        </div>
+                        <div class="feature-item reveal reveal-delay-1">
+                            <div class="feature-title">
+                                <span class="feature-dot"></span>
+                                <h4>Dễ ứng dụng thực tế</h4>
+                            </div>
+                            <p>Phù hợp cho học tập, portfolio, freelance, personal branding và kinh doanh nhỏ.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="thong-visual reveal reveal-delay-2">
+                        <div class="visual-wrapper" style="background: var(--color-dark); border-color: #555; box-shadow: 12px 12px 0px #555; cursor: pointer;">
+                            <div class="image-slider thong-slider">
+                                <img src="ảnh 2/t1.png" alt="Thong Mascot 1" class="mascot-img slide-item thong-slide-item active" style="mix-blend-mode: normal;">
+                                <img src="ảnh 2/t2.png" alt="Thong Mascot 2" class="mascot-img slide-item thong-slide-item" style="mix-blend-mode: normal;">
+                                <img src="ảnh 2/t3.png" alt="Thong Mascot 3" class="mascot-img slide-item thong-slide-item" style="mix-blend-mode: normal;">
+                                <img src="ảnh 2/t4.png" alt="Thong Mascot 4" class="mascot-img slide-item thong-slide-item" style="mix-blend-mode: normal;">
+                                <img src="ảnh 2/t5.png" alt="Thong Mascot 5" class="mascot-img slide-item thong-slide-item" style="mix-blend-mode: normal;">
+                                <img src="ảnh 2/t6.png" alt="Thong Mascot 6" class="mascot-img slide-item thong-slide-item" style="mix-blend-mode: normal;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>JATHONG.</h2>
+                    <p>Digital Identity & Web Design Startup.</p>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2026 JATHONG. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Popup Image">
+            <div class="lightbox-controls">
+                <button class="lightbox-prev">❮</button>
+                <button class="lightbox-next">❯</button>
+            </div>
+            <div class="lightbox-thumbnails">
+                <img src="ảnh/1.png" class="lb-thumb" onclick="currentLightboxSlide(0)">
+                <img src="ảnh/2.png" class="lb-thumb" onclick="currentLightboxSlide(1)">
+                <img src="ảnh/3.png" class="lb-thumb" onclick="currentLightboxSlide(2)">
+                <img src="ảnh/4.png" class="lb-thumb" onclick="currentLightboxSlide(3)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Thong Lightbox Modal -->
+    <div id="thong-lightbox" class="lightbox-modal">
+        <span class="thong-lightbox-close lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="thong-lightbox-img" src="" alt="Popup Image Thong">
+            <div class="lightbox-controls">
+                <button class="thong-lightbox-prev lightbox-prev">❮</button>
+                <button class="thong-lightbox-next lightbox-next">❯</button>
+            </div>
+            <div class="lightbox-thumbnails">
+                <img src="ảnh 2/t1.png" class="thong-lb-thumb lb-thumb" onclick="currentThongLightboxSlide(0)">
+                <img src="ảnh 2/t2.png" class="thong-lb-thumb lb-thumb" onclick="currentThongLightboxSlide(1)">
+                <img src="ảnh 2/t3.png" class="thong-lb-thumb lb-thumb" onclick="currentThongLightboxSlide(2)">
+                <img src="ảnh 2/t4.png" class="thong-lb-thumb lb-thumb" onclick="currentThongLightboxSlide(3)">
+                <img src="ảnh 2/t5.png" class="thong-lb-thumb lb-thumb" onclick="currentThongLightboxSlide(4)">
+                <img src="ảnh 2/t6.png" class="thong-lb-thumb lb-thumb" onclick="currentThongLightboxSlide(5)">
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

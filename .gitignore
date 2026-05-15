@@ -1,0 +1,33 @@
+# Cấu hình bỏ qua các thư mục nặng và file bảo mật khi đẩy lên mạng
+
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables
+.env
+.env.*
+client/.env*
+server/.env*
+
+# Secrets (Quan trọng: KHÔNG đẩy file cấu hình Google Sheets lên Git công khai)
+google-credentials.json
+server/google-credentials.json
+*.pem
+*.key
+
+# Build outputs
+dist/
+build/
+client/dist/
+client/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db

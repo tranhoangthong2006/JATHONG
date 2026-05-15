@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: jathong_backend
+    ports:
+      - "5000:5000"
+    restart: always
+    volumes:
+      # Ánh xạ file .env và google-credentials.json để dễ cấu hình mà không cần build lại
+      - ./server/.env:/app/.env
+      - ./server/google-credentials.json:/app/google-credentials.json
+    environment:
+      - NODE_ENV=production
+
+  frontend:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: jathong_frontend
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=production

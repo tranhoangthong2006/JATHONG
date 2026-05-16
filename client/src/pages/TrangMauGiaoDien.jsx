@@ -59,8 +59,9 @@ const TrangMauGiaoDien = () => {
             <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
           </Link>
           <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors font-medium text-sm">
-            <FiArrowLeft />
-            Quay Về Trang Chủ
+            <FiArrowLeft className="text-lg" />
+            <span className="hidden sm:inline">Quay Về Trang Chủ</span>
+            <span className="sm:hidden">Quay Về</span>
           </Link>
         </div>
       </div>
@@ -74,10 +75,10 @@ const TrangMauGiaoDien = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-black">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 text-black">
               Mẫu Giao Diện <span className="viet-text-gradient">Phổ Biến.</span>
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
               Một số sản phẩm mà bạn có thể lựa chọn.
             </p>
           </motion.div>
@@ -104,10 +105,10 @@ const TrangMauGiaoDien = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-90 group-hover:opacity-100"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                <p className="text-gray-300 text-sm mb-1">{project.category}</p>
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 text-sm">{project.desc}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8">
+                <p className="text-gray-300 text-xs md:text-sm mb-1">{project.category}</p>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-gray-300 text-xs md:text-sm">{project.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -116,11 +117,11 @@ const TrangMauGiaoDien = () => {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 py-12 bg-gray-50 text-gray-500">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <Link to="/" className="text-2xl font-bold tracking-tighter text-black cursor-pointer block">
             <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
           </Link>
-          <div className="text-sm">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
+          <div className="text-sm font-medium">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
         </div>
       </footer>
     </div>

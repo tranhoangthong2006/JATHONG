@@ -15,25 +15,25 @@ const VietHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-gray-200 bg-gray-50/50 text-sm text-gray-600 font-medium backdrop-blur-sm">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-gray-200 bg-gray-50/50 text-xs sm:text-sm text-gray-600 font-medium backdrop-blur-sm">
             Giải pháp thiết kế web tối ưu cho sinh viên
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-black">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 md:mb-8 leading-tight text-black">
             Chúng tôi tạo nên <br className="hidden md:block" />
             <span className="viet-text-gradient">Trải nghiệm đẳng cấp.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto font-light leading-relaxed">
             Nâng tầm thương hiệu cá nhân hoặc ý tưởng khởi nghiệp của bạn. Chúng tôi chuyên thiết kế landing page cao cấp và website mô phỏng chuyên nghiệp dành riêng cho sinh viên đầy tham vọng.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-base sm:text-lg hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
               Xem Sản Phẩm
               <FiArrowRight className="text-xl" />
             </button>
-            <button className="px-8 py-4 rounded-full font-semibold text-lg text-black border border-gray-300 hover:bg-gray-100 transition-colors duration-300">
+            <button className="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-base sm:text-lg text-black border border-gray-300 hover:bg-gray-100 transition-colors duration-300">
               Bảng Giá
             </button>
           </div>

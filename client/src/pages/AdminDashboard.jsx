@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiUsers, FiMessageSquare, FiDownload, FiSearch, FiCheckCircle, FiClock, FiLogOut, FiTrash2 } from 'react-icons/fi';
+import { FiUsers, FiMessageSquare, FiDownload, FiSearch, FiCheckCircle, FiClock, FiLogOut, FiTrash2, FiTrendingUp, FiList, FiX } from 'react-icons/fi';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import * as XLSX from 'xlsx';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,50 @@ const AdminDashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showServiceStats, setShowServiceStats] = useState(false);
+  const [isOverloaded, setIsOverloaded] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchSettings();
+    }
+  }, [isAuthenticated]);
+
+  const fetchSettings = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/settings`);
+      if (response.ok) {
+        const data = await response.json();
+        setIsOverloaded(data.isOverloaded);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const toggleOverload = async () => {
+    if (!window.confirm(`Bạn có chắc chắn muốn ${isOverloaded ? 'tắt' : 'bật'} chế độ quá tải?`)) return;
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/settings/overload`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-password': password
+        },
+        body: JSON.stringify({ isOverloaded: !isOverloaded })
+      });
+      if (response.ok) {
+        setIsOverloaded(!isOverloaded);
+      } else {
+        alert('Có lỗi xảy ra khi cập nhật trạng thái.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Lỗi kết nối máy chủ!');
+    }
+  };
 
   const login = async (e) => {
     e.preventDefault();
@@ -158,6 +202,27 @@ const AdminDashboard = () => {
   const totalContacts = contacts.length;
   const newContacts = contacts.filter(c => c.trangThai === 'new').length;
   
+  // Calculate most popular service
+  const serviceCounts = contacts.reduce((acc, contact) => {
+    if (contact.dichVu) {
+      acc[contact.dichVu] = (acc[contact.dichVu] || 0) + 1;
+    }
+    return acc;
+  }, {});
+
+  let popularService = "Chưa có dữ liệu";
+  let maxCount = 0;
+  Object.entries(serviceCounts).forEach(([service, count]) => {
+    if (count > maxCount) {
+      maxCount = count;
+      popularService = service;
+    }
+  });
+
+  const sortedServiceCounts = Object.entries(serviceCounts)
+    .map(([service, count]) => ({ service, count }))
+    .sort((a, b) => b.count - a.count);
+
   // Format data for chart (contacts per day)
   const chartDataObj = contacts.reduce((acc, contact) => {
     const date = new Date(contact.createdAt).toLocaleDateString('vi-VN', { month: 'short', day: 'numeric' });
@@ -176,23 +241,37 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto space-y-6">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center bg-white p-6 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left bg-white p-6 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] gap-4 md:gap-0">
           <div>
-            <h1 className="text-3xl font-black tracking-tight">Admin Dashboard</h1>
-            <p className="text-gray-500 font-medium">Quản lý khách hàng JATHONG Studio</p>
+            <h1 className="text-2xl md:text-3xl font-black tracking-tight">Admin Dashboard</h1>
+            <p className="text-gray-500 font-medium text-sm md:text-base">Quản lý khách hàng JATHONG Studio</p>
           </div>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <button onClick={exportToExcel} className="flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold hover:bg-green-200 transition-colors">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 w-full md:w-auto">
+            <button 
+              onClick={toggleOverload} 
+              className={`flex justify-center items-center gap-2 px-4 py-2 rounded-full font-bold transition-colors w-full sm:w-auto ${
+                isOverloaded 
+                  ? 'bg-red-500 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {isOverloaded ? <FiX /> : <FiCheckCircle />} 
+              {isOverloaded ? 'Đang Tạm Ngưng' : 'Bật Tạm Ngưng'}
+            </button>
+            <button onClick={() => setShowServiceStats(true)} className="flex justify-center items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold hover:bg-blue-200 transition-colors w-full sm:w-auto">
+              <FiList /> Thống kê dịch vụ
+            </button>
+            <button onClick={exportToExcel} className="flex justify-center items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold hover:bg-green-200 transition-colors w-full sm:w-auto">
               <FiDownload /> Xuất Excel
             </button>
-            <button onClick={() => setIsAuthenticated(false)} className="flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full font-bold hover:bg-red-200 transition-colors">
+            <button onClick={() => setIsAuthenticated(false)} className="flex justify-center items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full font-bold hover:bg-red-200 transition-colors w-full sm:w-auto">
               <FiLogOut /> Thoát
             </button>
           </div>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* Stats Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Stat Box 1 */}
           <div className="bg-white p-6 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between">
@@ -216,23 +295,35 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          {/* Chart Box */}
-          <div className="md:col-span-2 bg-white p-6 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <p className="text-gray-500 font-bold text-sm uppercase mb-4">Lưu lượng liên hệ (7 ngày)</p>
-            <div className="h-32 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
-                  <defs>
-                    <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#000000" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#000000" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <Tooltip />
-                  <Area type="monotone" dataKey="count" stroke="#000000" strokeWidth={3} fillOpacity={1} fill="url(#colorCount)" />
-                </AreaChart>
-              </ResponsiveContainer>
+          {/* Stat Box 3 - Most Popular Service */}
+          <div className="bg-white p-6 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between">
+            <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xl mb-4">
+              <FiTrendingUp />
             </div>
+            <div>
+              <p className="text-gray-500 font-bold text-sm uppercase">Dịch Vụ Phổ Biến</p>
+              <h2 className="text-lg md:text-2xl font-black truncate" title={popularService}>{popularService}</h2>
+              {maxCount > 0 && <p className="text-sm font-medium text-gray-500 mt-1">{maxCount} lượt chọn</p>}
+            </div>
+          </div>
+        </div>
+
+        {/* Chart Box */}
+        <div className="bg-white p-6 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <p className="text-gray-500 font-bold text-sm uppercase mb-4">Lưu lượng liên hệ (7 ngày)</p>
+          <div className="h-48 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={chartData}>
+                <defs>
+                  <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#000000" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#000000" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <Tooltip />
+                <Area type="monotone" dataKey="count" stroke="#000000" strokeWidth={3} fillOpacity={1} fill="url(#colorCount)" />
+              </AreaChart>
+            </ResponsiveContainer>
           </div>
         </div>
 
@@ -325,6 +416,35 @@ const AdminDashboard = () => {
         </div>
 
       </div>
+
+      {/* Service Stats Modal */}
+      {showServiceStats && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full max-w-md overflow-hidden">
+            <div className="p-6 border-b-2 border-gray-100 flex justify-between items-center bg-gray-50">
+              <h3 className="text-xl font-bold">Thống kê dịch vụ</h3>
+              <button onClick={() => setShowServiceStats(false)} className="text-gray-500 hover:text-black transition-colors">
+                <FiX className="text-2xl" />
+              </button>
+            </div>
+            <div className="p-6 max-h-[60vh] overflow-y-auto">
+              {sortedServiceCounts.length > 0 ? (
+                <ul className="space-y-3">
+                  {sortedServiceCounts.map((item, index) => (
+                    <li key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded-xl border-2 border-gray-100 hover:border-black transition-colors">
+                      <span className="font-semibold text-gray-800">{item.service}</span>
+                      <span className="bg-black text-white px-3 py-1 rounded-full font-bold text-sm">{item.count}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-center text-gray-500">Chưa có dữ liệu thống kê.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

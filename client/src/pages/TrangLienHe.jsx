@@ -25,7 +25,27 @@ const TrangLienHe = () => {
   const [dichVuPhu, setDichVuPhu] = useState([]); // Chứa danh sách các gói phụ được chọn
   const [trangThai, setTrangThai] = useState(''); // '', 'dang_gui', 'thanh_cong', 'loi'
   const [thongBao, setThongBao] = useState('');
+  const [isOverloaded, setIsOverloaded] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await fetch(`${apiUrl}/api/settings`);
+        if (res.ok) {
+          const data = await res.json();
+          setIsOverloaded(data.isOverloaded);
+        }
+      } catch (err) {
+        console.error('Lỗi lấy cấu hình:', err);
+      }
+    };
+    
+    fetchSettings(); // Lần đầu tiên
+    const intervalId = setInterval(fetchSettings, 5000); // Lặp lại mỗi 5 giây
+    return () => clearInterval(intervalId); // Dọn dẹp khi unmount
+  }, []);
 
   useEffect(() => {
     if (location.state) {
@@ -107,8 +127,9 @@ const TrangLienHe = () => {
             <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
           </Link>
           <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors font-medium text-sm">
-            <FiArrowLeft />
-            Quay Về Trang Chủ
+            <FiArrowLeft className="text-lg" />
+            <span className="hidden sm:inline">Quay Về Trang Chủ</span>
+            <span className="sm:hidden">Quay Về</span>
           </Link>
         </div>
       </div>
@@ -122,10 +143,10 @@ const TrangLienHe = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-black">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 text-black">
               LIÊN HỆ <span className="viet-text-gradient">NGAY.</span>
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
               Điền thông tin bên dưới, chúng tôi sẽ phản hồi nhanh nhất có thể.
             </p>
           </motion.div>
@@ -140,15 +161,23 @@ const TrangLienHe = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="viet-glass p-8 md:p-12 rounded-3xl border-2 border-gray-100 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+            className="viet-glass p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl border-2 border-gray-100 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
           >
-            {trangThai === 'thanh_cong' ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FiCheck className="text-white text-3xl" />
+            {isOverloaded ? (
+              <div className="text-center py-10 md:py-16">
+                <div className="text-5xl md:text-6xl mb-4 md:mb-6 animate-bounce">🥺🙏</div>
+                <h3 className="text-2xl md:text-3xl font-black mb-3 md:mb-4 tracking-tight">Tạm Ngưng Nhận Khách</h3>
+                <p className="text-gray-600 text-base md:text-lg font-medium leading-relaxed max-w-lg mx-auto">
+                  Vì số lượng quá lớn JATHONG xin tạm ngưng không nhận thêm khách hàng, xin lỗi quý khách rất rất rất nhiều vì sự bất tiện này.
+                </p>
+              </div>
+            ) : trangThai === 'thanh_cong' ? (
+              <div className="text-center py-10 md:py-12">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                  <FiCheck className="text-white text-2xl md:text-3xl" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Gửi Thành Công!</h3>
-                <p className="text-gray-600 mb-8">{thongBao}</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-3">Gửi Thành Công!</h3>
+                <p className="text-gray-600 text-sm md:text-base mb-6 md:mb-8">{thongBao}</p>
                 <button
                   onClick={() => setTrangThai('')}
                   className="bg-black text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 transition-colors"

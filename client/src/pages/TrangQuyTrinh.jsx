@@ -41,8 +41,9 @@ const TrangQuyTrinh = () => {
             <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
           </Link>
           <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors font-medium text-sm">
-            <FiArrowLeft />
-            Quay Về Trang Chủ
+            <FiArrowLeft className="text-lg" />
+            <span className="hidden sm:inline">Quay Về Trang Chủ</span>
+            <span className="sm:hidden">Quay Về</span>
           </Link>
         </div>
       </div>
@@ -56,10 +57,10 @@ const TrangQuyTrinh = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-black">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 text-black">
               Quy Trình <span className="viet-text-gradient">Làm Việc.</span>
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
               Chỉ với 4 bước đơn giản, bạn sẽ sở hữu một website chuyên nghiệp.
             </p>
           </motion.div>
@@ -76,7 +77,7 @@ const TrangQuyTrinh = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="viet-glass p-8 md:p-10 rounded-3xl flex flex-col md:flex-row gap-6 items-start"
+              className="viet-glass p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl flex flex-col md:flex-row gap-4 md:gap-6 items-start shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
             >
               <div className="flex items-center gap-4 shrink-0">
                 <span className="text-5xl font-black text-gray-200">{item.step}</span>
@@ -106,11 +107,11 @@ const TrangQuyTrinh = () => {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 py-12 bg-gray-50 text-gray-500">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <Link to="/" className="text-2xl font-bold tracking-tighter text-black cursor-pointer block">
             <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
           </Link>
-          <div className="text-sm">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
+          <div className="text-sm font-medium">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
         </div>
       </footer>
     </div>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const VietNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,13 +39,32 @@ const VietNavbar = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden text-black cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+        <div className="md:hidden text-black cursor-pointer p-1" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
         </div>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-[calc(100%+10px)] left-4 right-4 bg-white rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 flex flex-col gap-4 z-40 md:hidden"
+          >
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold border-b border-gray-100 pb-2 hover:text-gray-600 transition-colors">Về JATHONG</Link>
+            <Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold border-b border-gray-100 pb-2 hover:text-gray-600 transition-colors">Dịch Vụ</Link>
+            <Link to="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold border-b border-gray-100 pb-2 hover:text-gray-600 transition-colors">Mẫu Giao Diện</Link>
+            <Link to="/workflow" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold border-b border-gray-100 pb-2 hover:text-gray-600 transition-colors">Quy Trình Làm Việc</Link>
+            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-black text-white px-5 py-4 rounded-xl font-bold text-center mt-2 shadow-[2px_2px_0px_0px_rgba(200,200,200,1)] active:scale-95 transition-transform">
+              Liên hệ ngay
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

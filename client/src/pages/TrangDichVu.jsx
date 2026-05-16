@@ -82,8 +82,9 @@ const TrangDichVu = () => {
               <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
             </Link>
             <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors font-medium text-sm">
-              <FiArrowLeft />
-              Về Trang Chủ
+              <FiArrowLeft className="text-lg" />
+              <span className="hidden sm:inline">Về Trang Chủ</span>
+              <span className="sm:hidden">Quay Lại</span>
             </Link>
           </div>
         </div>
@@ -97,10 +98,10 @@ const TrangDichVu = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 text-black uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight mb-4 md:mb-6 text-black uppercase">
               DỊCH VỤ CỦA <span className="viet-text-gradient">JATHONG.</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
               Giải pháp thiết kế và phát triển website chuyên nghiệp, tối ưu cho từng mục tiêu cụ thể từ cá nhân đến doanh nghiệp.
             </p>
           </motion.div>
@@ -110,9 +111,9 @@ const TrangDichVu = () => {
       {/* 01. GÓI DỊCH VỤ CHÍNH */}
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-black text-white text-sm font-bold tracking-wider mb-4">01. GÓI DỊCH VỤ CHÍNH</span>
-            <h2 className="text-3xl md:text-4xl font-black">Lựa Chọn Phù Hợp Nhất</h2>
+          <div className="text-center mb-10 md:mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-black text-white text-xs md:text-sm font-bold tracking-wider mb-4">01. GÓI DỊCH VỤ CHÍNH</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">Lựa Chọn Phù Hợp Nhất</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -183,9 +184,9 @@ const TrangDichVu = () => {
       {/* 02. GÓI DỊCH VỤ PHỤ */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-gray-200 text-gray-800 text-sm font-bold tracking-wider mb-4">02. GÓI DỊCH VỤ PHỤ</span>
-            <h2 className="text-3xl md:text-4xl font-black">Nâng Cấp & Bảo Trì</h2>
+          <div className="text-center mb-10 md:mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-gray-200 text-gray-800 text-xs md:text-sm font-bold tracking-wider mb-4">02. GÓI DỊCH VỤ PHỤ</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">Nâng Cấp & Bảo Trì</h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -265,10 +266,10 @@ const TrangDichVu = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-black text-white px-6">
+      <section className="py-16 md:py-24 bg-black text-white px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-6">Sẵn sàng bắt đầu dự án?</h2>
-          <p className="text-gray-400 font-medium text-lg mb-10 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 md:mb-6">Sẵn sàng bắt đầu dự án?</h2>
+          <p className="text-gray-400 font-medium text-base md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto">
             Dù bạn cần một website cá nhân nhỏ gọn hay một nền tảng doanh nghiệp phức tạp, JATHONG Studio luôn có giải pháp phù hợp với ngân sách của bạn.
           </p>
           <Link to="/contact" className="inline-block bg-white text-black px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300">
@@ -279,7 +280,7 @@ const TrangDichVu = () => {
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-12 bg-black text-gray-500">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <Link to="/" className="text-2xl font-bold tracking-tighter text-white cursor-pointer block">
             <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
           </Link>

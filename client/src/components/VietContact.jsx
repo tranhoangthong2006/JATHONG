@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const VietContact = () => {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-white">
+    <section id="contact" className="py-16 md:py-24 relative overflow-hidden bg-white">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gray-200 rounded-full mix-blend-multiply filter blur-[128px] opacity-50"></div>
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">LIÊN HỆ <span className="viet-text-gradient">NGAY.</span></h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-black">LIÊN HỆ <span className="viet-text-gradient">NGAY.</span></h2>
           <p className="text-gray-600">Điền thông tin bên dưới, chúng tôi sẽ phản hồi nhanh nhất có thể .</p>
         </div>
 
@@ -17,7 +17,7 @@ const VietContact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="viet-glass p-8 md:p-12 rounded-3xl"
+          className="viet-glass p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-gray-100"
         >
           <form className="flex flex-col gap-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

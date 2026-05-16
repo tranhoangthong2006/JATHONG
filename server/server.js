@@ -7,6 +7,7 @@ import fs from 'fs';
 import mongoose from 'mongoose';
 import dns from 'dns';
 import Contact from './models/Contact.js';
+import Setting from './models/Setting.js';
 
 // Khắc phục lỗi DNS SRV (ECONNREFUSED) trên Node.js
 dns.setServers(['8.8.8.8', '8.8.4.4']);
@@ -65,6 +66,12 @@ app.post('/api/lien-he', async (req, res) => {
 
     if (!hoTen || !email || !soDienThoai || !dichVu || !tinNhan) {
       return res.status(400).json({ message: 'Vui lòng điền đầy đủ thông tin.' });
+    }
+
+    // Kiểm tra trạng thái quá tải
+    const setting = await Setting.findOne();
+    if (setting && setting.isOverloaded) {
+      return res.status(403).json({ message: 'Hệ thống hiện đang tạm ngưng nhận yêu cầu do quá tải. Mong quý khách thông cảm.' });
     }
 
     // 1. LƯU VÀO MONGODB (PRIORITY 1)
@@ -168,6 +175,36 @@ app.delete('/api/contacts/:id', adminAuth, async (req, res) => {
     res.status(200).json({ message: 'Xóa thành công.' });
   } catch (error) {
     res.status(500).json({ message: 'Lỗi khi xóa dữ liệu.' });
+  }
+});
+
+// API lấy trạng thái hệ thống
+app.get('/api/settings', async (req, res) => {
+  try {
+    let setting = await Setting.findOne();
+    if (!setting) {
+      setting = await Setting.create({ isOverloaded: false });
+    }
+    res.status(200).json(setting);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi khi lấy cấu hình.' });
+  }
+});
+
+// API cập nhật chế độ quá tải
+app.put('/api/settings/overload', adminAuth, async (req, res) => {
+  try {
+    const { isOverloaded } = req.body;
+    let setting = await Setting.findOne();
+    if (!setting) {
+      setting = new Setting({ isOverloaded });
+    } else {
+      setting.isOverloaded = isOverloaded;
+    }
+    await setting.save();
+    res.status(200).json(setting);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi khi cập nhật cấu hình.' });
   }
 });
 

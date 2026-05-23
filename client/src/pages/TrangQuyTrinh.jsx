@@ -1,32 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FiArrowLeft, FiMessageCircle, FiFileText, FiCheckCircle, FiSend } from 'react-icons/fi';
+import { FiArrowLeft, FiSearch, FiTarget, FiDatabase, FiLayers, FiCode, FiCheckCircle } from 'react-icons/fi';
 
 const steps = [
   {
-    icon: <FiMessageCircle className="text-3xl text-black" />,
+    icon: <FiSearch className="text-3xl text-black" />,
     step: "01",
-    title: "Trao Đổi Yêu Cầu",
-    desc: "Bạn liên hệ và mô tả ý tưởng, mục tiêu, phong cách mong muốn. Chúng tôi sẽ tư vấn giải pháp phù hợp nhất."
+    title: "Discover",
+    desc: "Chúng tôi bắt đầu bằng việc hiểu bạn là ai, bạn đang làm gì và bạn muốn người khác nhớ đến mình như thế nào."
   },
   {
-    icon: <FiFileText className="text-3xl text-black" />,
+    icon: <FiTarget className="text-3xl text-black" />,
     step: "02",
-    title: "Thiết Kế & Phát Triển",
-    desc: "Đội ngũ bắt tay vào thiết kế giao diện và code website. Bạn sẽ được xem bản demo trong quá trình làm."
+    title: "Define",
+    desc: "JATHONG xác định định vị cá nhân, phong cách hình ảnh, thông điệp chính và cấu trúc portfolio phù hợp."
+  },
+  {
+    icon: <FiDatabase className="text-3xl text-black" />,
+    step: "03",
+    title: "Data",
+    desc: "Bạn cung cấp hình ảnh, video, số liệu, case study và các thông tin cần thiết để JATHONG xây dựng nội dung website."
+  },
+  {
+    icon: <FiLayers className="text-3xl text-black" />,
+    step: "04",
+    title: "Design",
+    desc: "Chúng tôi thiết kế giao diện website theo mood & tone riêng, đảm bảo đẹp, rõ, có gu và đúng cá tính."
+  },
+  {
+    icon: <FiCode className="text-3xl text-black" />,
+    step: "05",
+    title: "Develop",
+    desc: "Website được dựng hoàn chỉnh, tối ưu trên desktop/mobile, gắn link social, form liên hệ và các tính năng cần thiết."
   },
   {
     icon: <FiCheckCircle className="text-3xl text-black" />,
-    step: "03",
-    title: "Chỉnh Sửa & Hoàn Thiện",
-    desc: "Bạn phản hồi, chúng tôi chỉnh sửa đến khi bạn hài lòng 100%. Không giới hạn số lần sửa."
-  },
-  {
-    icon: <FiSend className="text-3xl text-black" />,
-    step: "04",
-    title: "Bàn Giao Sản Phẩm",
-    desc: "Bàn giao toàn bộ source code, hỗ trợ deploy lên hosting, hướng dẫn sử dụng và bảo trì."
+    step: "06",
+    title: "Deliver",
+    desc: "JATHONG bàn giao website, hướng dẫn sử dụng và hỗ trợ bảo hành/cập nhật sau khi hoàn thành."
   }
 ];
 
@@ -61,7 +73,7 @@ const TrangQuyTrinh = () => {
               Quy Trình <span className="viet-text-gradient">Làm Việc.</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
-              Chỉ với 4 bước đơn giản, bạn sẽ sở hữu một website chuyên nghiệp.
+              Quy trình 6D chuẩn hóa giúp bạn sở hữu một website chuyên nghiệp và đúng bản sắc cá nhân.
             </p>
           </motion.div>
         </div>

@@ -118,35 +118,39 @@ const TrangLienHe = () => {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen">
+    <div className="bg-[#0A0D14] text-white min-h-screen relative overflow-hidden">
+      {/* Background space/nebula elements */}
+      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#0077FF]/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[20%] right-[-10%] w-[50vw] h-[50vw] bg-[#0077FF]/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
       {/* Navbar */}
       <nav className="fixed w-full z-50 px-4 md:px-8 pt-4">
         <div className="animated-border-pill max-w-7xl mx-auto">
-          <div className="animated-border-pill-inner bg-white px-6 py-3 flex justify-between items-center w-full">
-          <Link to="/" className="text-2xl font-bold tracking-tighter text-black">
-            <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
-          </Link>
-          <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors font-medium text-sm">
-            <FiArrowLeft className="text-lg" />
-            <span className="hidden sm:inline">Quay Về Trang Chủ</span>
-            <span className="sm:hidden">Quay Về</span>
-          </Link>
+          <div className="animated-border-pill-inner bg-[#0A0D14]/80 backdrop-blur-xl px-6 py-3 flex justify-between items-center w-full border border-white/[0.05] shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
+            <Link to="/" className="text-2xl font-bold tracking-tighter text-white">
+              <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-[#0A0D14] px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300">JATHONG</span></span>
+            </Link>
+            <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#00B8FF] transition-colors font-medium text-sm font-orbitron uppercase tracking-wider">
+              <FiArrowLeft className="text-lg" />
+              <span className="hidden sm:inline">Quay Về Trang Chủ</span>
+              <span className="sm:hidden">Quay Về</span>
+            </Link>
+          </div>
         </div>
-      </div>
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-32 pb-16 px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 text-black">
-              LIÊN HỆ <span className="viet-text-gradient">NGAY.</span>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-orbitron font-extrabold tracking-tight mb-4 md:mb-6 text-white uppercase">
+              LIÊN HỆ <span className="viet-text-gradient font-orbitron">NGAY.</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl font-light">
               Điền thông tin bên dưới, chúng tôi sẽ phản hồi nhanh nhất có thể.
             </p>
           </motion.div>
@@ -154,33 +158,33 @@ const TrangLienHe = () => {
       </section>
 
       {/* Form */}
-      <section className="pb-24 px-6">
+      <section className="pb-24 px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="viet-glass p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl border-2 border-gray-100 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+            className="luxury-card p-6 sm:p-8 md:p-12 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.65)]"
           >
             {isOverloaded ? (
               <div className="text-center py-10 md:py-16">
                 <div className="text-5xl md:text-6xl mb-4 md:mb-6 animate-bounce">🥺🙏</div>
-                <h3 className="text-2xl md:text-3xl font-black mb-3 md:mb-4 tracking-tight">Tạm Ngưng Nhận Khách</h3>
-                <p className="text-gray-600 text-base md:text-lg font-medium leading-relaxed max-w-lg mx-auto">
+                <h3 className="text-2xl md:text-3xl font-orbitron font-black mb-3 md:mb-4 tracking-tight text-white">Tạm Ngưng Nhận Khách</h3>
+                <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-lg mx-auto">
                   Vì số lượng quá lớn JATHONG xin tạm ngưng không nhận thêm khách hàng, xin lỗi quý khách rất rất rất nhiều vì sự bất tiện này.
                 </p>
               </div>
             ) : trangThai === 'thanh_cong' ? (
               <div className="text-center py-10 md:py-12">
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-[#0077FF] rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-[0_0_20px_#0077FF]">
                   <FiCheck className="text-white text-2xl md:text-3xl" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-3">Gửi Thành Công!</h3>
-                <p className="text-gray-600 text-sm md:text-base mb-6 md:mb-8">{thongBao}</p>
+                <h3 className="text-xl md:text-2xl font-orbitron font-bold mb-3 text-white">GỬI THÀNH CÔNG!</h3>
+                <p className="text-gray-400 text-sm md:text-base mb-6 md:mb-8 font-light">{thongBao}</p>
                 <button
                   onClick={() => setTrangThai('')}
-                  className="bg-black text-white px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 transition-colors"
+                  className="liquid-glass-btn text-white px-8 py-3 text-sm font-semibold"
                 >
                   Gửi Tin Nhắn Khác
                 </button>
@@ -189,7 +193,7 @@ const TrangLienHe = () => {
               <form onSubmit={xuLyGuiForm} className="flex flex-col gap-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-gray-800 uppercase tracking-wide">Họ và Tên</label>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider font-orbitron">Họ và Tên</label>
                     <input
                       type="text"
                       name="hoTen"
@@ -197,11 +201,11 @@ const TrangLienHe = () => {
                       onChange={xuLyThayDoi}
                       placeholder="Tên của bạn"
                       required
-                      className="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-black transition-colors"
+                      className="bg-[#0A0D14]/80 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#0077FF] focus:ring-1 focus:ring-[#0077FF] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] focus:shadow-[0_0_15px_rgba(0,119,255,0.2)] transition-all duration-300 font-light"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-gray-800 uppercase tracking-wide">Email</label>
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-wider font-orbitron">Email</label>
                     <input
                       type="email"
                       name="email"
@@ -209,13 +213,13 @@ const TrangLienHe = () => {
                       onChange={xuLyThayDoi}
                       placeholder="email@example.com"
                       required
-                      className="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-black transition-colors"
+                      className="bg-[#0A0D14]/80 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#0077FF] focus:ring-1 focus:ring-[#0077FF] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] focus:shadow-[0_0_15px_rgba(0,119,255,0.2)] transition-all duration-300 font-light"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-800 uppercase tracking-wide">Số Điện Thoại</label>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider font-orbitron">Số Điện Thoại</label>
                   <input
                     type="tel"
                     name="soDienThoai"
@@ -223,29 +227,34 @@ const TrangLienHe = () => {
                     onChange={xuLyThayDoi}
                     placeholder="Số điện thoại của bạn"
                     required
-                    className="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-black transition-colors"
+                    className="bg-[#0A0D14]/80 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#0077FF] focus:ring-1 focus:ring-[#0077FF] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] focus:shadow-[0_0_15px_rgba(0,119,255,0.2)] transition-all duration-300 font-light"
                   />
                 </div>
 
                 {/* Gói Dịch Vụ Chính */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-gray-800 uppercase tracking-wide">Gói Dịch Vụ Chính (Bắt buộc)</label>
-                  <select
-                    name="dichVu"
-                    value={formData.dichVu}
-                    onChange={xuLyThayDoi}
-                    className="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-black transition-colors appearance-none font-bold"
-                  >
-                    <option value="Student Landing">Student Landing</option>
-                    <option value="Personal Branding Web">Personal Branding Web</option>
-                    <option value="Sales Landing Page">Sales Landing Page</option>
-                    <option value="Business Website">Business Website</option>
-                  </select>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider font-orbitron">Gói Dịch Vụ Chính (Bắt buộc)</label>
+                  <div className="relative">
+                    <select
+                      name="dichVu"
+                      value={formData.dichVu}
+                      onChange={xuLyThayDoi}
+                      className="w-full bg-[#0A0D14]/80 border border-white/10 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-[#0077FF] focus:ring-1 focus:ring-[#0077FF] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] transition-all duration-300 appearance-none font-bold"
+                    >
+                      <option value="Student Landing" className="bg-[#0A0D14] text-white">Student Landing</option>
+                      <option value="Personal Branding Web" className="bg-[#0A0D14] text-white">Personal Branding Web</option>
+                      <option value="Sales Landing Page" className="bg-[#0A0D14] text-white">Sales Landing Page</option>
+                      <option value="Business Website" className="bg-[#0A0D14] text-white">Business Website</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Gói Nâng Cấp & Bảo Trì */}
-                <div className="flex flex-col gap-3 mt-2 p-6 bg-gray-50 border-2 border-gray-200 rounded-2xl">
-                  <label className="text-sm font-bold text-gray-800 uppercase tracking-wide border-b-2 border-gray-200 pb-2 mb-2">Gói Nâng Cấp & Bảo Trì (Tùy chọn thêm)</label>
+                <div className="flex flex-col gap-3 mt-2 p-6 bg-[#0A1220]/80 border border-white/10 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                  <label className="text-sm font-bold text-gray-300 uppercase tracking-wide border-b border-white/[0.08] pb-2 mb-2 font-orbitron">Gói Nâng Cấp & Bảo Trì (Tùy chọn thêm)</label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {extraServicesList.map((service, index) => (
                       <label key={index} className="flex items-center gap-3 cursor-pointer group">
@@ -255,18 +264,18 @@ const TrangLienHe = () => {
                             value={service}
                             checked={dichVuPhu.includes(service)}
                             onChange={xuLyThayDoiPhu}
-                            className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded focus:outline-none checked:bg-black checked:border-black transition-colors cursor-pointer"
+                            className="peer appearance-none w-5 h-5 border border-white/20 rounded focus:outline-none checked:bg-[#0077FF] checked:border-[#0077FF] transition-colors cursor-pointer bg-[#0A0D14] shadow-[0_0_10px_rgba(0,119,255,0.2)]"
                           />
                           <FiCheck className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none text-xs" />
                         </div>
-                        <span className="text-sm font-medium text-gray-600 group-hover:text-black transition-colors">{service}</span>
+                        <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">{service}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2 mt-2">
-                  <label className="text-sm font-bold text-gray-800 uppercase tracking-wide">Tin Nhắn</label>
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider font-orbitron">Tin Nhắn</label>
                   <textarea
                     name="tinNhan"
                     value={formData.tinNhan}
@@ -274,18 +283,18 @@ const TrangLienHe = () => {
                     rows="4"
                     placeholder="Hãy cho chúng tôi biết về tổng quan yêu cầu của bạn"
                     required
-                    className="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 text-black focus:outline-none focus:border-black transition-colors resize-none"
+                    className="bg-[#0A0D14]/80 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#0077FF] focus:ring-1 focus:ring-[#0077FF] shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] focus:shadow-[0_0_15px_rgba(0,119,255,0.2)] transition-all duration-300 resize-none font-light"
                   ></textarea>
                 </div>
 
                 {trangThai === 'loi' && (
-                  <div className="text-red-600 text-sm font-bold bg-red-50 p-4 rounded-xl border border-red-200">{thongBao}</div>
+                  <div className="text-red-400 text-sm font-bold bg-red-950/30 p-4 rounded-xl border border-red-900">{thongBao}</div>
                 )}
 
                 <button
                   type="submit"
                   disabled={trangThai === 'dang_gui'}
-                  className="mt-6 bg-black text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[4px_4px_0px_0px_rgba(200,200,200,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+                  className="liquid-glass-btn mt-6 w-full py-3.5 font-bold disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider font-orbitron text-white"
                 >
                   {trangThai === 'dang_gui' ? 'Đang gửi...' : 'Gửi Yêu Cầu'}
                 </button>
@@ -296,12 +305,12 @@ const TrangLienHe = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 py-12 bg-gray-50 text-gray-500">
+      <footer className="border-t border-white/[0.08] py-12 bg-[#0A0D14] text-gray-500">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <Link to="/" className="text-2xl font-bold tracking-tighter text-black cursor-pointer block">
-            <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
+          <Link to="/" className="text-2xl font-bold tracking-tighter text-white cursor-pointer block">
+            <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-[#0A0D14] px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300">JATHONG</span></span>
           </Link>
-          <div className="text-sm font-medium">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
+          <div className="text-sm font-medium text-gray-500">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
         </div>
       </footer>
     </div>

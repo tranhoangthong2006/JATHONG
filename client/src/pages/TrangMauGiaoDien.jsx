@@ -50,35 +50,39 @@ const TrangMauGiaoDien = () => {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen">
+    <div className="bg-[#0A0D14] text-white min-h-screen relative overflow-hidden">
+      {/* Background space/nebula elements */}
+      <div className="absolute top-[10%] left-[-10%] w-[50vw] h-[50vw] bg-[#0077FF]/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[20%] right-[-10%] w-[50vw] h-[50vw] bg-[#0077FF]/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
       {/* Navbar */}
       <nav className="fixed w-full z-50 px-4 md:px-8 pt-4">
         <div className="animated-border-pill max-w-7xl mx-auto">
-          <div className="animated-border-pill-inner bg-white px-6 py-3 flex justify-between items-center w-full">
-          <Link to="/" className="text-2xl font-bold tracking-tighter text-black">
-            <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
-          </Link>
-          <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors font-medium text-sm">
-            <FiArrowLeft className="text-lg" />
-            <span className="hidden sm:inline">Quay Về Trang Chủ</span>
-            <span className="sm:hidden">Quay Về</span>
-          </Link>
+          <div className="animated-border-pill-inner bg-[#0A0D14]/80 backdrop-blur-xl px-6 py-3 flex justify-between items-center w-full border border-white/[0.05] shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
+            <Link to="/" className="text-2xl font-bold tracking-tighter text-white">
+              <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-[#0A0D14] px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300">JATHONG</span></span>
+            </Link>
+            <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#00B8FF] transition-colors font-medium text-sm font-orbitron uppercase tracking-wider">
+              <FiArrowLeft className="text-lg" />
+              <span className="hidden sm:inline">Quay Về Trang Chủ</span>
+              <span className="sm:hidden">Quay Về</span>
+            </Link>
+          </div>
         </div>
-      </div>
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-32 pb-16 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 text-black">
-              Mẫu Giao Diện <span className="viet-text-gradient">Phổ Biến.</span>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-orbitron font-extrabold tracking-tight mb-4 md:mb-6 text-white uppercase">
+              Mẫu Giao Diện <span className="viet-text-gradient font-orbitron">Phổ Biến.</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-3xl">
               Một số sản phẩm mà bạn có thể lựa chọn.
             </p>
           </motion.div>
@@ -86,7 +90,7 @@ const TrangMauGiaoDien = () => {
       </section>
 
       {/* Grid */}
-      <section className="py-8 px-6 pb-24">
+      <section className="py-8 px-6 pb-24 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
@@ -96,19 +100,23 @@ const TrangMauGiaoDien = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               onClick={() => handleSelectTemplate(project.title)}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
+              className="luxury-card group cursor-pointer"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden">
+              <div className="aspect-[4/3] w-full overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-90 group-hover:opacity-100"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out opacity-80 group-hover:opacity-100"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-transparent to-transparent"></div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8">
-                <p className="text-gray-300 text-xs md:text-sm mb-1">{project.category}</p>
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 text-xs md:text-sm">{project.desc}</p>
+              <div className="p-6 relative bg-[#0A1220]/80 border-t border-white/10">
+                <p className="text-[#00B8FF] text-xs font-semibold tracking-wider uppercase mb-1 drop-shadow-[0_0_5px_rgba(0,184,255,0.3)]">{project.category}</p>
+                <h3 className="text-xl font-bold text-white font-orbitron group-hover:text-[#00B8FF] transition-colors mb-2 uppercase tracking-wide">{project.title}</h3>
+                <p className="text-sm text-gray-400 font-light line-clamp-2">{project.desc}</p>
+                
+                {/* Micro Oceanic Swoosh under each card */}
+                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#0077FF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </motion.div>
           ))}
@@ -116,12 +124,12 @@ const TrangMauGiaoDien = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 py-12 bg-gray-50 text-gray-500">
+      <footer className="border-t border-white/[0.08] py-12 bg-[#0A0D14] text-gray-500">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-          <Link to="/" className="text-2xl font-bold tracking-tighter text-black cursor-pointer block">
-            <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-white px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300">JATHONG</span></span>
+          <Link to="/" className="text-2xl font-bold tracking-tighter text-white cursor-pointer block">
+            <span className="animated-border-pill inline-block cursor-pointer"><span className="animated-border-pill-inner bg-[#0A0D14] px-5 py-1 text-xl font-extrabold tracking-wide inline-flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300">JATHONG</span></span>
           </Link>
-          <div className="text-sm font-medium">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
+          <div className="text-sm font-medium text-gray-500">&copy; {new Date().getFullYear()} JATHONG. Khách hàng là trên hết.</div>
         </div>
       </footer>
     </div>

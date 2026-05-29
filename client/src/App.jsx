@@ -15,31 +15,36 @@ import AdminDashboard from './pages/AdminDashboard';
 
 function TrangChu() {
   return (
-    <div className="bg-white text-black min-h-screen selection:bg-gray-200 selection:text-black">
+    <>
       <VietNavbar />
       <main>
         <VietHero />
         <VietServices />
         <VietPortfolio />
-
       </main>
       <VietFooter />
-    </div>
+    </>
   );
 }
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<TrangChu />} />
-        <Route path="/about" element={<VietAbout />} />
-        <Route path="/services" element={<TrangDichVu />} />
-        <Route path="/portfolio" element={<TrangMauGiaoDien />} />
-        <Route path="/workflow" element={<TrangQuyTrinh />} />
-        <Route path="/contact" element={<TrangLienHe />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-      </Routes>
+      <div className="bg-[#0A0D14] text-white min-h-screen relative overflow-hidden selection:bg-[#0077FF]/30 selection:text-white font-sans">
+
+
+        <div className="relative z-10 flex flex-col min-h-screen justify-between">
+          <Routes>
+            <Route path="/" element={<TrangChu />} />
+            <Route path="/about" element={<VietAbout />} />
+            <Route path="/services" element={<TrangDichVu />} />
+            <Route path="/portfolio" element={<TrangMauGiaoDien />} />
+            <Route path="/workflow" element={<TrangQuyTrinh />} />
+            <Route path="/contact" element={<TrangLienHe />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }

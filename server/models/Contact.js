@@ -8,7 +8,8 @@ const ContactSchema = new mongoose.Schema({
     tinNhan: { type: String },
     soDienThoai: { type: String },
     // Bonus thêm trường quản lý nội bộ
-    trangThai: { type: String, default: 'new' } 
+    trangThai: { type: String, default: 'new' },
+    isDeleted: { type: Boolean, default: false }
 }, { 
     // Tự động tạo cột "createdAt" (Ngày Gửi) và "updatedAt"
     timestamps: true 
